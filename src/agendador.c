@@ -121,3 +121,38 @@ int quantificar_evento(Fila *fila){
     return fila->tamanho;
 }
 
+void agendar_evento_ordenado(Fila *fila,int dia, int mes, int ano, int hora, int min, char descricao[], char prioridade[]){
+
+    Evento *aux, *novo=malloc(sizeof(Evento));
+    if(novo){
+        novo->dia=dia;
+        novo->mes=mes;
+        novo->ano=ano;
+        novo->hora=hora;
+        novo->min=min;
+        strcpy(novo->descricao,descricao);
+        strcpy(novo->prioridade,prioridade);
+        if(fila->prim == NULL){
+            novo->prox=NULL;
+            fila->prim = novo;           
+        }
+        else if(novo->ano < fila->prim->ano){
+            novo->prox = fila->prim;
+            fila->prim = novo;
+        }  
+        else{
+            aux = fila->prim;
+            while (aux->prox && (novo->ano >= aux->prox->ano  && (novo->mes >= aux->prox->mes && novo->dia > aux->prox->dia)))
+            {
+                aux = aux->prox;           
+            } 
+            novo->prox = aux->prox;
+            aux->prox = novo;
+                    
+        }
+        fila->tamanho++;
+    }
+    else
+        printf("\nErro ao alocar memoria.\n");
+}
+

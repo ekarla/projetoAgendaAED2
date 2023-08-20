@@ -26,5 +26,6 @@ Evento* proximo_evento(Fila *fila);
 Evento* buscar_evento(Fila *fila, int dia, int mes, int ano, int hora, int min);
 void alterar_evento(Fila *fila, int dia, int mes, int ano, int hora, int min, int novo_dia, int novo_mes, int novo_ano, int novo_hora, int novo_min, char novo_descricao[]);
 Evento* cancelar_evento(Fila *fila, int dia, int mes, int ano, int hora, int min);
+void agendar_evento_ordenado(Fila *fila,int dia, int mes, int ano, int hora, int min, char descricao[], char prioridade[]);
 
 #endif

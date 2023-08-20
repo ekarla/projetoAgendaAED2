@@ -31,7 +31,7 @@ int main(){
             scanf("%d:%d",&hora,&min);
             scanf("%s", descricao);
             scanf("%s", prioridade);
-            agendar_evento(&fila, dia, mes, ano, hora, min,descricao,prioridade);
+            agendar_evento_ordenado(&fila, dia, mes, ano, hora, min,descricao,prioridade);
             break;
         case 2:
             printf("%d\n", quantificar_evento(&fila));
