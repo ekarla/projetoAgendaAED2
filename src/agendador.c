@@ -136,13 +136,13 @@ void agendar_evento_ordenado(Fila *fila,int dia, int mes, int ano, int hora, int
             novo->prox=NULL;
             fila->prim = novo;           
         }
-        else if(novo->ano < fila->prim->ano){
+        else if(fila->tamanho == 1 && novo->ano < fila->prim->ano){
             novo->prox = fila->prim;
             fila->prim = novo;
         }  
         else{
             aux = fila->prim;
-            while (aux->prox && (novo->ano >= aux->prox->ano  && (novo->mes >= aux->prox->mes && novo->dia > aux->prox->dia)))
+            while (aux->prox && (novo->ano >= aux->prox->ano  && novo->mes > aux->prox->mes ))
             {
                 aux = aux->prox;           
             } 
